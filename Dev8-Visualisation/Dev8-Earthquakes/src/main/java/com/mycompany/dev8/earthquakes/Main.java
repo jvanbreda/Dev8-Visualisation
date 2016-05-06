@@ -20,24 +20,4 @@ public class Main {
     public static void main(String[] args) {
         EarthquakeMap.main("com.mycompany.dev8.earthquakes.EarthquakeMap");
     }
-
-    public JSONArray getData() {
-        JSONArray array = null;
-        try {
-            URL url = new URL("http://apis.is/earthquake/is");
-            BufferedReader br = new BufferedReader(new InputStreamReader(url.openStream()));
-            String jsonString = br.readLine();
-            
-            if (jsonString != null)
-                //Used to format the JSON string in order to create a JSONArray from it
-                jsonString = jsonString.substring(11);
-            array = JSONArray.parse(jsonString);
-            
-        } catch (IOException e) {
-            System.err.println("IOException occured");
-        }
-        
-        return array;
-
-    }
 }
