@@ -60,6 +60,8 @@ public class DataProvider {
             earthquake.size = jObject.getDouble("size");
             earthquake.quality = jObject.getDouble("quality");
             earthquake.humanReadableLocation = jObject.getString("humanReadableLocation");
+            
+            earthquake.MapCoordinates();
 
             earthquakes.add(earthquake);
         }

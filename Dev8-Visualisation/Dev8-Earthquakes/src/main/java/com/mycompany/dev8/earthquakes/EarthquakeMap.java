@@ -9,6 +9,7 @@ import com.mycompany.dev8.earthquakes.Models.Earthquake;
 import java.util.ArrayList;
 import java.util.List;
 import processing.core.PApplet;
+import processing.core.PFont;
 import processing.core.PImage;
 
 /**
@@ -16,32 +17,37 @@ import processing.core.PImage;
  * @author Jesse
  */
 public class EarthquakeMap extends PApplet {
-    DataProvider dataProvider;
-    PImage image;
+    private PImage image;
+    
+    private DataProvider dataProvider;
+    
+    private List<Earthquake> earthquakes;
     
     public void setup(){
         size(1000, 812);
         
-        dataProvider = new DataProvider(this);
         image = loadImage("2000px-Map_of_Iceland.svg.png");
         
-        List<Earthquake> earthquakes = (ArrayList<Earthquake>)dataProvider.getEarthquakeData();
         
-        background(image);
-        drawLocations(earthquakes);
+        dataProvider = new DataProvider(this);
+        
+        earthquakes = (ArrayList<Earthquake>)dataProvider.getEarthquakeData();
         
         
     }
     
     public void draw(){
+        background(image);
+        drawLocations();
         
-    }
-    
-    public void drawLocations(List<Earthquake> earthquakes){
         for (Earthquake earthquake : earthquakes){
-            earthquake.draw(width, height);
+            earthquake.act();
         }
-        
     }
     
+    public void drawLocations(){
+        for (Earthquake earthquake : earthquakes){
+            earthquake.draw();
+        }
+    }
 }
