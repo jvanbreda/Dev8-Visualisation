@@ -18,11 +18,7 @@ import processing.data.JSONArray;
 public class Main {
 
     public static void main(String[] args) {
-        Main m = new Main();
-        JSONArray json = m.getData();
-        for (int i = 0; i < json.size(); i++ ){
-            System.out.println(json.getJSONObject(i));
-        }
+        EarthquakeMap.main("com.mycompany.dev8.earthquakes.EarthquakeMap");
     }
 
     public JSONArray getData() {
