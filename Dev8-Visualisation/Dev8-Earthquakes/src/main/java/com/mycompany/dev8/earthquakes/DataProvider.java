@@ -25,16 +25,21 @@ import processing.data.JSONObject;
  * @author swenm_000
  */
 public class DataProvider {
+    
+    private EarthquakeMap earthquakeMap;
 
+    public DataProvider(EarthquakeMap earthquakeMap) {
+        this.earthquakeMap = earthquakeMap;
+    }
+    
     public List<Earthquake> getEarthquakeData() {
         List<Earthquake> earthquakes = new ArrayList<>();
 
-        DateFormat dateFormat = DateFormat.getDateInstance();
         JSONArray jArray = getData();
         for (int i = 0; i < jArray.size(); i++) {
             JSONObject jObject = jArray.getJSONObject(i);
 
-            Earthquake earthquake = new Earthquake();
+            Earthquake earthquake = new Earthquake(earthquakeMap);
             try {
                 TimeZone tz = TimeZone.getTimeZone("Europe/Amsterdam");
                 Calendar cal = Calendar.getInstance(tz);
