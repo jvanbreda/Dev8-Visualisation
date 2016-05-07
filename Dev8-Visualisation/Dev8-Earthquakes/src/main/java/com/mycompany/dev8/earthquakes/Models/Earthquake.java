@@ -30,6 +30,8 @@ public class Earthquake {
     public float mapHeigth;
     
     private EarthquakeMap earthquakeMap;
+    
+    private final int positiveSizeModifier = 10;
 
     public Earthquake(EarthquakeMap earthquakeMap) {
         this.earthquakeMap = earthquakeMap;
@@ -38,9 +40,15 @@ public class Earthquake {
     public void MapCoordinates() {
         mapLatitude = map((float) this.latitude, 63.1f, 66.8f, 0, earthquakeMap.width);
         mapLongitude = map((float) this.longitude, -25.0f, -13.0f, 0, earthquakeMap.height);
+            
+        mapWidth = (float) Math.abs(this.size) * 20f; // Absolute value of size, because size can be negative
+        mapHeigth = (float) Math.abs(this.size) * 20f; // Absolute value of size, because size can be negative
         
-        mapWidth = (float) this.size * 20;
-        mapHeigth = (float) this.size * 20;
+        // A size of -1 should be smaller than 1, so add 10 if the value is positive
+        if(this.size >= 0) {
+            mapWidth += positiveSizeModifier;
+            mapHeigth += positiveSizeModifier;
+        }
     }
 
     public void act() {
@@ -51,11 +59,12 @@ public class Earthquake {
     }
     
     public void draw() {
-        //Little calculation to match darkness of color to depth of earthquake
-        //Fully red means 12 km deep. To get fully red, the 'green' number in the rgb color encoding needs to be 0.
+        // Little calculation to match darkness of color to depth of earthquake
+        // Fully red means 12 km deep. To get fully red, the 'green' number in the rgb color encoding needs to be 0.
         // 255 / 12 = 21.25, so for every km deeper, the green color number has to be decreased by an extra factor of 21.25
         earthquakeMap.fill(255, 255 - ((float)this.depth * 21.25f), 0);
         earthquakeMap.ellipse(mapLatitude, mapLongitude, mapWidth, mapHeigth);
+        // SHOULD DRAW A SMALLER WHEN THE SIZE IS NEGATIVE
     }
     
     @Override

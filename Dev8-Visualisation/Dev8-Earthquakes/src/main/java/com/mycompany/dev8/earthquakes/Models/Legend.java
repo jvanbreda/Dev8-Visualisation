@@ -47,7 +47,7 @@ public class Legend {
         private final int width = 255;
         private final int height = 10;
         
-        private String[] numbers = {"0km","2km","4km","6km","8km","10km","12km"};
+        private String[] numbers = {"0km", "2km", "4km", "6km", "8km", "10km", "12km"};
         private int counter = 0;
         
         public void draw(){

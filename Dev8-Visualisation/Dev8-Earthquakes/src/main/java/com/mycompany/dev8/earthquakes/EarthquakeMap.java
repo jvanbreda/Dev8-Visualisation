@@ -5,6 +5,7 @@
  */
 package com.mycompany.dev8.earthquakes;
 
+import Data.DataProvider;
 import com.mycompany.dev8.earthquakes.Models.Earthquake;
 import com.mycompany.dev8.earthquakes.Models.Legend;
 import java.util.ArrayList;
@@ -27,11 +28,11 @@ public class EarthquakeMap extends PApplet {
     private Legend legend;
     
     public void setup(){
-        size(739, 600);
+        size(799, 649);
         
         frame.setTitle("Earthquakes in and around Iceland from the past 48 hours");
         
-        image = loadImage("2000px-Map_of_Iceland.svg.png");
+        image = loadImage("799x649px-map_of_iceland.png");
         
         dataProvider = new DataProvider(this);
         
