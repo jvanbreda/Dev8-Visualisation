@@ -6,6 +6,7 @@
 package com.mycompany.dev8.earthquakes;
 
 import com.mycompany.dev8.earthquakes.Models.Earthquake;
+import com.mycompany.dev8.earthquakes.Models.Legend;
 import java.util.ArrayList;
 import java.util.List;
 import processing.core.PApplet;
@@ -23,22 +24,27 @@ public class EarthquakeMap extends PApplet {
     
     private List<Earthquake> earthquakes;
     
+    private Legend legend;
+    
     public void setup(){
-        size(1000, 812);
+        size(739, 600);
+        
+        frame.setTitle("Earthquakes in and around Iceland from the past 48 hours");
         
         image = loadImage("2000px-Map_of_Iceland.svg.png");
-        
         
         dataProvider = new DataProvider(this);
         
         earthquakes = (ArrayList<Earthquake>)dataProvider.getEarthquakeData();
         
-        
+        legend = new Legend(this, new String[]{"Every circle represent an earthquake.", "The bigger the circles, the bigger the size of the earthquake", "Depths:"});
     }
     
     public void draw(){
         background(image);
         drawLocations();
+        legend.draw();
+        drawDataSource();
         
         for (Earthquake earthquake : earthquakes){
             earthquake.act();
@@ -49,5 +55,9 @@ public class EarthquakeMap extends PApplet {
         for (Earthquake earthquake : earthquakes){
             earthquake.draw();
         }
+    }
+    
+    public void drawDataSource(){
+        this.text("This data is provided by the Icelandic Meteorological Office: http://www.vedur.is/", 5, height - 5);
     }
 }

@@ -36,7 +36,7 @@ public class Popover {
         this.earthquakeMap = earthquakeMap;
         this.content = content;
         this.padding = padding;
-
+        
         Initialize();
     }
 

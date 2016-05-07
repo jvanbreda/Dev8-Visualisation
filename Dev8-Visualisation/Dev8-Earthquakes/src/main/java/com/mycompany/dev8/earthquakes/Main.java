@@ -5,12 +5,6 @@
  */
 package com.mycompany.dev8.earthquakes;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.net.URL;
-import processing.data.JSONArray;
-
 /**
  *
  * @author Jesse

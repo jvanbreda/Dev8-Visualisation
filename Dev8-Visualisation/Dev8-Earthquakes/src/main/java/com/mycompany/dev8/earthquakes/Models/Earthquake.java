@@ -46,12 +46,15 @@ public class Earthquake {
     public void act() {
         if(isOverEllipse()) {
             // Use String.Format
-            new Popover(earthquakeMap, new String[] { "Timestamp: " + timestamp.toString(), "Coordinates: (" + latitude + "|" + longitude + ")", "Size: " + size, "Depth: " + depth }).draw();
+            new Popover(earthquakeMap, new String[] { "Timestamp: " + timestamp.toString(), "Coordinates: (" + latitude + "|" + longitude + ")", "Size: " + size + " Richter Scale", "Depth: " + depth + " km"}).draw();
         }
     }
     
     public void draw() {
-        earthquakeMap.fill(255);
+        //Little calculation to match darkness of color to depth of earthquake
+        //Fully red means 12 km deep. To get fully red, the 'green' number in the rgb color encoding needs to be 0.
+        // 255 / 12 = 21.25, so for every km deeper, the green color number has to be decreased by an extra factor of 21.25
+        earthquakeMap.fill(255, 255 - ((float)this.depth * 21.25f), 0);
         earthquakeMap.ellipse(mapLatitude, mapLongitude, mapWidth, mapHeigth);
     }
     
