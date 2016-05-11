@@ -7,6 +7,7 @@ package com.mycompany.dev8.earthquakes.Models;
 
 import com.mycompany.dev8.earthquakes.EarthquakeMap;
 import java.util.List;
+import processing.core.PApplet;
 
 /**
  *
@@ -14,7 +15,7 @@ import java.util.List;
  */
 public class Popover {
 
-    private EarthquakeMap earthquakeMap;
+    private PApplet applet;
     private String[] content;
 
     // Default values
@@ -25,15 +26,15 @@ public class Popover {
     private float width;
     private float height;
 
-    public Popover(EarthquakeMap earthquakeMap, String[] content) {
-        this.earthquakeMap = earthquakeMap;
+    public Popover(PApplet applet, String[] content) {
+        this.applet = applet;
         this.content = content;
 
         Initialize();
     }
 
-    public Popover(EarthquakeMap earthquakeMap, String[] content, int padding) {
-        this.earthquakeMap = earthquakeMap;
+    public Popover(PApplet applet, String[] content, int padding) {
+        this.applet = applet;
         this.content = content;
         this.padding = padding;
         
@@ -41,24 +42,26 @@ public class Popover {
     }
 
     public void draw() {
+        applet.strokeWeight(1);
+        applet.stroke(0);
         // Check if the popover fits on the screen
-        if (earthquakeMap.mouseX + width < earthquakeMap.width) {
+        if (applet.mouseX + width < applet.width) {
             // It fits, draw to the right side
-            earthquakeMap.fill(255);
-            earthquakeMap.rect(earthquakeMap.mouseX, earthquakeMap.mouseY, width, -height);
+            applet.fill(255);
+            applet.rect(applet.mouseX, applet.mouseY, width, -height);
 
-            earthquakeMap.fill(0);
+            applet.fill(0);
             for (int i = 1; i <= content.length; i++) {
-                earthquakeMap.text(content[i - 1], earthquakeMap.mouseX + padding, earthquakeMap.mouseY - height + padding + textSize * i + textSpacing * (i - 1));
+                applet.text(content[i - 1], applet.mouseX + padding, applet.mouseY - height + padding + textSize * i + textSpacing * (i - 1));
             }
         } else {
             // It doesn't fit, draw to the left side
-            earthquakeMap.fill(255);
-            earthquakeMap.rect(earthquakeMap.mouseX, earthquakeMap.mouseY, -width, -height);
+            applet.fill(255);
+            applet.rect(applet.mouseX, applet.mouseY, -width, -height);
 
-            earthquakeMap.fill(0);
+            applet.fill(0);
             for (int i = 1; i <= content.length; i++) {
-                earthquakeMap.text(content[i - 1], earthquakeMap.mouseX + padding - width, earthquakeMap.mouseY - height + padding + textSize * i + textSpacing * (i - 1));
+                applet.text(content[i - 1], applet.mouseX + padding - width, applet.mouseY - height + padding + textSize * i + textSpacing * (i - 1));
             }
         }
     }
@@ -67,7 +70,7 @@ public class Popover {
         float maxWidth = 0;
 
         for (String item : content) {
-            float tempWidth = earthquakeMap.textWidth(item);
+            float tempWidth = applet.textWidth(item);
             if (tempWidth > maxWidth) {
                 maxWidth = tempWidth;
             }
