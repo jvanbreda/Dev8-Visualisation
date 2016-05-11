@@ -30,8 +30,6 @@ public class Earthquake {
     public float mapHeigth;
     
     private EarthquakeMap earthquakeMap;
-    
-    private final int positiveSizeModifier = 10;
 
     public Earthquake(EarthquakeMap earthquakeMap) {
         this.earthquakeMap = earthquakeMap;
@@ -44,10 +42,10 @@ public class Earthquake {
         mapWidth = (float) Math.abs(this.size) * 20f; // Absolute value of size, because size can be negative
         mapHeigth = (float) Math.abs(this.size) * 20f; // Absolute value of size, because size can be negative
         
-        // A size of -1 should be smaller than 1, so add 10 if the value is positive
-        if(this.size >= 0) {
-            mapWidth += positiveSizeModifier;
-            mapHeigth += positiveSizeModifier;
+        // A size of -1 should be smaller than 1
+        if(this.size < 0) {
+            mapWidth = 0.2f;
+            mapHeigth = 0.2f;
         }
     }
 
@@ -64,7 +62,6 @@ public class Earthquake {
         // 255 / 12 = 21.25, so for every km deeper, the green color number has to be decreased by an extra factor of 21.25
         earthquakeMap.fill(255, 255 - ((float)this.depth * 21.25f), 0);
         earthquakeMap.ellipse(mapLatitude, mapLongitude, mapWidth, mapHeigth);
-        // SHOULD DRAW A SMALLER WHEN THE SIZE IS NEGATIVE
     }
     
     @Override

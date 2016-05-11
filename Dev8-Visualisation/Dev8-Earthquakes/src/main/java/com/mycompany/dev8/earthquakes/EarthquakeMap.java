@@ -52,6 +52,15 @@ public class EarthquakeMap extends PApplet {
         }
     }
     
+    public void keyPressed() {
+        if(key == 'h' || key == 'H') {
+            if(legend.isVisible())
+                legend.setVisible(false);
+            else
+                legend.setVisible(true);
+        }
+    }
+    
     public void drawLocations(){
         for (Earthquake earthquake : earthquakes){
             earthquake.draw();
@@ -59,6 +68,7 @@ public class EarthquakeMap extends PApplet {
     }
     
     public void drawDataSource(){
+        this.fill(0);
         this.text("This data is provided by the Icelandic Meteorological Office: http://www.vedur.is/", 5, height - 5);
     }
 }
