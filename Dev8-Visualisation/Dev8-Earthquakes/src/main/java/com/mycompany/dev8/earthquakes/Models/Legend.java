@@ -12,24 +12,35 @@ import com.mycompany.dev8.earthquakes.EarthquakeMap;
  * @author Jesse
  */
 public class Legend {
-    
+    private boolean visible = true;
     private EarthquakeMap earthquakeMap;
     
+    private Vector2<Float> position = new Vector2<>(0f, 0f);
     private final int width = 400;
     private final int height = 110;
     private final int padding = 8;
     private final int margin = 20;
     
+    private final ColorBar colorBar;
     private final String[] content;
     
-    public Legend(EarthquakeMap earthquakeMap, String[] content) {
+    public Legend(EarthquakeMap earthquakeMap, String[] content) {      
         this.earthquakeMap = earthquakeMap;
         this.content = content;
+        
+        colorBar = new ColorBar();
     }
     
     public void draw(){
+        if(!visible)
+            return;
+        
         earthquakeMap.fill(255);
-        earthquakeMap.rect(0, 0, width ,height);
+        earthquakeMap.rect(position.x, position.y, width, height);
+        
+//        Close X
+//        earthquakeMap.line(position.x + width - padding - 32, position.y + padding, position.x + width - padding, position.y + 40 - padding);
+//        earthquakeMap.line(position.x + width - padding, position.y + padding, position.x + width - padding - 32, position.y + 40 - padding);
                 
         earthquakeMap.fill(0);
         
@@ -37,7 +48,7 @@ public class Legend {
             earthquakeMap.text(content[i-1], padding, (i * margin));
         }
         
-        new ColorBar().draw();
+        //colorBar.draw();
     }
     
     private class ColorBar {
@@ -47,9 +58,10 @@ public class Legend {
         private final int width = 255;
         private final int height = 10;
         
-        private String[] numbers = {"0km","2km","4km","6km","8km","10km","12km"};
+        private String[] numbers = {"0km", "2km", "4km", "6km", "8km", "10km", "12km"};
         private int counter = 0;
         
+        // THROWS OUT OF BOUNDS EXCEPTION
         public void draw(){
             for(int i = 0; i <= width; i += width / intervals){
                 earthquakeMap.fill(255, 255 - i, 0);
@@ -59,10 +71,14 @@ public class Legend {
                 counter++;
             }
             earthquakeMap.text(numbers[counter], width + (width / intervals), 100);
-            
         }
-        
     }
- 
-    
+
+    public boolean isVisible() {
+        return visible;
+    }
+
+    public void setVisible(boolean visible) {
+        this.visible = visible;
+    }
 }

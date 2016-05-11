@@ -5,8 +5,10 @@
  */
 package com.mycompany.dev8.earthquakes;
 
+import com.Data.DataProvider;
 import com.mycompany.dev8.earthquakes.Models.Earthquake;
 import com.mycompany.dev8.earthquakes.Models.Legend;
+import com.mycompany.dev8.earthquakes.Models.VisualisationMode;
 import java.util.ArrayList;
 import java.util.List;
 import processing.core.PApplet;
@@ -18,46 +20,73 @@ import processing.core.PImage;
  * @author Jesse
  */
 public class EarthquakeMap extends PApplet {
+
     private PImage image;
-    
+
     private DataProvider dataProvider;
-    
+
     private List<Earthquake> earthquakes;
-    
+
     private Legend legend;
-    
-    public void setup(){
-        size(739, 600);
-        
+
+    public void setup() {
+        size(799, 649);
+
         frame.setTitle("Earthquakes in and around Iceland from the past 48 hours");
-        
-        image = loadImage("2000px-Map_of_Iceland.svg.png");
-        
+
+        image = loadImage("799x649px-map_of_iceland.png");
+
         dataProvider = new DataProvider(this);
-        
-        earthquakes = (ArrayList<Earthquake>)dataProvider.getEarthquakeData();
-        
+
+        earthquakes = (ArrayList<Earthquake>) dataProvider.getEarthquakeData();
+
         legend = new Legend(this, new String[]{"Every circle represent an earthquake.", "The bigger the circles, the bigger the size of the earthquake", "Depths:"});
     }
-    
-    public void draw(){
+
+    public void draw() {
+        strokeWeight(1);
+        stroke(0);
+
         background(image);
-        drawLocations();
         legend.draw();
         drawDataSource();
-        
-        for (Earthquake earthquake : earthquakes){
+
+        drawLocations();
+        for (Earthquake earthquake : earthquakes) {
             earthquake.act();
         }
     }
-    
-    public void drawLocations(){
-        for (Earthquake earthquake : earthquakes){
+
+    public void keyPressed() {
+        if (key == 'h' || key == 'H') {
+            if (legend.isVisible()) {
+                legend.setVisible(false);
+            } else {
+                legend.setVisible(true);
+            }
+        }
+
+        if (key == 'm' || key == 'M') {
+            if (earthquakes.get(0).getVisualisationMode() == VisualisationMode.StaticMode) {
+                for (Earthquake earthquake : earthquakes) {
+                    earthquake.setVisualisationMode(VisualisationMode.DynamicMode);
+                }
+            } else {
+                for (Earthquake earthquake : earthquakes) {
+                    earthquake.setVisualisationMode(VisualisationMode.StaticMode);
+                }
+            }
+        }
+    }
+
+    public void drawLocations() {
+        for (Earthquake earthquake : earthquakes) {
             earthquake.draw();
         }
     }
-    
-    public void drawDataSource(){
+
+    public void drawDataSource() {
+        this.fill(0);
         this.text("This data is provided by the Icelandic Meteorological Office: http://www.vedur.is/", 5, height - 5);
     }
 }
