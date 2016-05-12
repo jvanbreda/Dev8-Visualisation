@@ -48,7 +48,7 @@ public class Legend {
             earthquakeMap.text(content[i-1], padding, (i * margin));
         }
         
-        //colorBar.draw();
+        colorBar.draw();
     }
     
     private class ColorBar {
@@ -59,10 +59,11 @@ public class Legend {
         private final int height = 10;
         
         private String[] numbers = {"0km", "2km", "4km", "6km", "8km", "10km", "12km"};
-        private int counter = 0;
+        
         
         // THROWS OUT OF BOUNDS EXCEPTION
         public void draw(){
+            int counter = 0;
             for(int i = 0; i <= width; i += width / intervals){
                 earthquakeMap.fill(255, 255 - i, 0);
                 earthquakeMap.rect(padding + i, 75 , width/intervals, height);

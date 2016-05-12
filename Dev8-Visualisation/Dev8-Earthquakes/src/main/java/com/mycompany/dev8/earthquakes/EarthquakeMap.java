@@ -34,7 +34,7 @@ public class EarthquakeMap extends PApplet {
 
         frame.setTitle("Earthquakes in and around Iceland from the past 48 hours");
 
-        image = loadImage("799x649px-map_of_iceland.png");
+        image = loadImage("2000px-map_of_iceland.png");
 
         dataProvider = new DataProvider(this);
 
