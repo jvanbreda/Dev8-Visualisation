@@ -5,9 +5,11 @@
  */
 package com.JesseAndSwen.dev8.earthquakes;
 
+import com.JesseAndSwen.dev8.earthquakes.Data.Converter;
 import com.JesseAndSwen.dev8.earthquakes.Data.DataProvider;
 import com.JesseAndSwen.dev8.earthquakes.Models.Earthquake;
 import com.JesseAndSwen.dev8.earthquakes.Display.Legend;
+import com.JesseAndSwen.dev8.earthquakes.Models.Coordinates.CoordinateRd;
 import com.JesseAndSwen.dev8.earthquakes.Models.VisualisationMode;
 import java.util.ArrayList;
 import java.util.List;
@@ -20,7 +22,6 @@ import processing.core.PImage;
  * @author Jesse
  */
 public class EarthquakeMap extends PApplet {
-
     private PImage image;
 
     private DataProvider dataProvider;

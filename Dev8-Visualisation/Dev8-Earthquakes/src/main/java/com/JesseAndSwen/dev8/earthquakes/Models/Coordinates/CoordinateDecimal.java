@@ -33,4 +33,9 @@ public class CoordinateDecimal {
     public void setLongitude(float longitude) {
         this.longitude = longitude;
     }
+    
+    @Override
+    public String toString() {
+        return "CoordinateDecimal[latitude: " + latitude + "; longitude: " + longitude + "]";
+    }
 }
