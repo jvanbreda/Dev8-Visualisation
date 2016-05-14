@@ -6,7 +6,9 @@
 package com.JesseAndSwen.dev8.earthquakes.Data;
 
 import com.JesseAndSwen.dev8.earthquakes.Models.Coordinates.CoordinateDecimal;
+import com.JesseAndSwen.dev8.earthquakes.Models.Coordinates.CoordinateGeographic;
 import com.JesseAndSwen.dev8.earthquakes.Models.Coordinates.CoordinateRd;
+import com.JesseAndSwen.dev8.earthquakes.Models.Coordinates.GeoCoordinate;
 
 /**
  *
@@ -36,5 +38,41 @@ public class Converter {
         float longitude = (float)(referenceWgs84Y + (sumE / 3600));
         
         return new CoordinateDecimal(latitude, longitude);
+    }
+    
+    public static CoordinateDecimal convertFromGeographicToDecimal(CoordinateGeographic coordinateGeographic){
+        GeoCoordinate latitude = coordinateGeographic.getLatitude();
+        GeoCoordinate longitude = coordinateGeographic.getLongitude();
+        
+        int d1 = latitude.getDegrees();
+        int m1 = latitude.getMinutes();
+        float s1 = latitude.getSeconds();
+        
+        int d2 = longitude.getDegrees();
+        int m2 = longitude.getMinutes();
+        float s2 = longitude.getSeconds();
+        
+        float dd1 = d1 + (m1/60) + (s1/3600);
+        float dd2 = d2 + (m2/60) + (s2/3600);
+        
+        return new CoordinateDecimal(dd1, dd2);
+    }
+    
+    public static CoordinateGeographic convertFromDecimalToGeographic(CoordinateDecimal coordinateDecimal){
+        float latitude = coordinateDecimal.getLatitude();
+        float longitude = coordinateDecimal.getLongitude();
+        
+        int d1 = (int) latitude;
+        int m1 = (int) (Math.abs(latitude) * 60) % 60;
+        float s1 = Math.abs(latitude) * 3600 % 60;
+        
+        int d2 = (int) longitude;
+        int m2 = (int) (Math.abs(longitude) * 60) % 60;
+        float s2 = Math.abs(longitude) * 3600 % 60;
+        
+        GeoCoordinate g1 = new GeoCoordinate(d1, m1, s1);
+        GeoCoordinate g2 = new GeoCoordinate(d2, m2, s2);
+        
+        return new CoordinateGeographic(g1, g2);
     }
 }
