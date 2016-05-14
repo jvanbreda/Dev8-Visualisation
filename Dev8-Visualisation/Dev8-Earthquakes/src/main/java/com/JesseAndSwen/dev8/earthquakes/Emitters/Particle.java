@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.JesseAndSwen.Emitters;
+package com.JesseAndSwen.dev8.earthquakes.Emitters;
 
 import com.JesseAndSwen.dev8.earthquakes.Models.Vector2;
 import javax.swing.text.Position;

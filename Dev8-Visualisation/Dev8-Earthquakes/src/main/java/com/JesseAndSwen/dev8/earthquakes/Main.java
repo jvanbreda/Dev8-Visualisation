@@ -12,6 +12,6 @@ package com.JesseAndSwen.dev8.earthquakes;
 public class Main {
 
     public static void main(String[] args) {
-        EarthquakeMap.main("com.mycompany.dev8.earthquakes.EarthquakeMap");
+        EarthquakeMap.main("com.JesseAndSwen.dev8.earthquakes.EarthquakeMap");
     }
 }
