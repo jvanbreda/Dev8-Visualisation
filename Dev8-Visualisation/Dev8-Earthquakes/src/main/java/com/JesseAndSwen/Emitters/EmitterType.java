@@ -3,13 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.mycompany.dev8.earthquakes.Models;
+package com.JesseAndSwen.Emitters;
 
 /**
  *
  * @author swenm_000
  */
-public enum VisualisationMode {
-    StaticMode,
-    DynamicMode
+public enum EmitterType {
+    Circle
 }

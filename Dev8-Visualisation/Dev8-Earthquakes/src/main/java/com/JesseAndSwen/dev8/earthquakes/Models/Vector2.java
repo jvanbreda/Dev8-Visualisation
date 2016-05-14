@@ -3,15 +3,18 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.mycompany.dev8.earthquakes;
+package com.JesseAndSwen.dev8.earthquakes.Models;
 
 /**
  *
- * @author Jesse
+ * @author swenm_000
  */
-public class Main {
+public class Vector2<T> {
+    public T x;
+    public T y;
 
-    public static void main(String[] args) {
-        EarthquakeMap.main("com.mycompany.dev8.earthquakes.EarthquakeMap");
+    public Vector2(T x, T y) {
+        this.x = x;
+        this.y = y;
     }
 }

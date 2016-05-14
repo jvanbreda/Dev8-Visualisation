@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.Emitters;
+package com.JesseAndSwen.Data;
 
 /**
  *
  * @author swenm_000
  */
-public enum EmitterType {
-    Circle
+public class Converter {
+    
 }

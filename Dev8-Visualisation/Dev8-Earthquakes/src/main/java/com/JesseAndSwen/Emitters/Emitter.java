@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.Emitters;
+package com.JesseAndSwen.Emitters;
 
-import com.mycompany.dev8.earthquakes.Models.Vector2;
+import com.JesseAndSwen.dev8.earthquakes.Models.Vector2;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
