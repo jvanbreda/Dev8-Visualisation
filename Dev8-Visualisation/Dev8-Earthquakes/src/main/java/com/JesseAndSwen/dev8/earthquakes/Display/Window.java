@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.JesseAndSwen.dev8.earthquakes.Models;
+package com.JesseAndSwen.dev8.earthquakes.Display;
 
+import com.JesseAndSwen.dev8.earthquakes.Models.Vector2;
 import processing.core.PApplet;
 
 /**

@@ -5,6 +5,7 @@
  */
 package com.JesseAndSwen.dev8.earthquakes.Models;
 
+import com.JesseAndSwen.dev8.earthquakes.Display.Popover;
 import com.JesseAndSwen.dev8.earthquakes.Emitters.Emitter;
 import com.JesseAndSwen.dev8.earthquakes.EarthquakeMap;
 import java.util.Date;

@@ -7,7 +7,7 @@ package com.JesseAndSwen.dev8.earthquakes;
 
 import com.JesseAndSwen.dev8.earthquakes.Data.DataProvider;
 import com.JesseAndSwen.dev8.earthquakes.Models.Earthquake;
-import com.JesseAndSwen.dev8.earthquakes.Models.Legend;
+import com.JesseAndSwen.dev8.earthquakes.Display.Legend;
 import com.JesseAndSwen.dev8.earthquakes.Models.VisualisationMode;
 import java.util.ArrayList;
 import java.util.List;
