@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.JesseAndSwen.Data;
+package com.JesseAndSwen.dev8.earthquakes.Emitters;
 
 /**
  *
  * @author swenm_000
  */
-public class Converter {
-    
+public enum EmitterType {
+    Circle
 }

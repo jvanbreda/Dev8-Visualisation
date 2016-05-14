@@ -5,7 +5,7 @@
  */
 package com.JesseAndSwen.dev8.earthquakes;
 
-import com.JesseAndSwen.Data.DataProvider;
+import com.JesseAndSwen.dev8.earthquakes.Data.DataProvider;
 import com.JesseAndSwen.dev8.earthquakes.Models.Earthquake;
 import com.JesseAndSwen.dev8.earthquakes.Models.Legend;
 import com.JesseAndSwen.dev8.earthquakes.Models.VisualisationMode;

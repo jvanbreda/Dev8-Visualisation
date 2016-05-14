@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.JesseAndSwen.Data;
+package com.JesseAndSwen.dev8.earthquakes.Data;
 
 import com.JesseAndSwen.dev8.earthquakes.EarthquakeMap;
 import com.JesseAndSwen.dev8.earthquakes.Models.Earthquake;
