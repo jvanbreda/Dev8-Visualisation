@@ -68,10 +68,12 @@ public class EarthquakeMap extends PApplet {
 
         if (key == 'm' || key == 'M') {
             if (earthquakes.get(0).getVisualisationMode() == VisualisationMode.StaticMode) {
+                legend.setVisible(false);
                 for (Earthquake earthquake : earthquakes) {
                     earthquake.setVisualisationMode(VisualisationMode.DynamicMode);
                 }
             } else {
+                legend.setVisible(true);
                 for (Earthquake earthquake : earthquakes) {
                     earthquake.setVisualisationMode(VisualisationMode.StaticMode);
                 }
