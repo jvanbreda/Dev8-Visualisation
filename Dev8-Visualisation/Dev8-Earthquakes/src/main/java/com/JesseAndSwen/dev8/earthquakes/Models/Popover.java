@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.mycompany.dev8.earthquakes.Models;
+package com.JesseAndSwen.dev8.earthquakes.Models;
 
-import com.mycompany.dev8.earthquakes.EarthquakeMap;
+import com.JesseAndSwen.dev8.earthquakes.EarthquakeMap;
 import java.util.List;
 import processing.core.PApplet;
 

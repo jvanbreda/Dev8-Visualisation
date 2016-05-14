@@ -3,10 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.mycompany.dev8.earthquakes.Models;
+package com.JesseAndSwen.dev8.earthquakes.Models;
 
-import com.Emitters.Emitter;
-import com.mycompany.dev8.earthquakes.EarthquakeMap;
+import com.JesseAndSwen.Emitters.Emitter;
+import com.JesseAndSwen.dev8.earthquakes.EarthquakeMap;
 import java.util.Date;
 import processing.core.PApplet;
 import static processing.core.PApplet.map;

@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.mycompany.dev8.earthquakes;
+package com.JesseAndSwen.dev8.earthquakes;
 
-import com.Data.DataProvider;
-import com.mycompany.dev8.earthquakes.Models.Earthquake;
-import com.mycompany.dev8.earthquakes.Models.Legend;
-import com.mycompany.dev8.earthquakes.Models.VisualisationMode;
+import com.JesseAndSwen.Data.DataProvider;
+import com.JesseAndSwen.dev8.earthquakes.Models.Earthquake;
+import com.JesseAndSwen.dev8.earthquakes.Models.Legend;
+import com.JesseAndSwen.dev8.earthquakes.Models.VisualisationMode;
 import java.util.ArrayList;
 import java.util.List;
 import processing.core.PApplet;
