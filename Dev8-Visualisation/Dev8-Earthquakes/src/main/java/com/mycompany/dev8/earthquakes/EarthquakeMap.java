@@ -34,7 +34,7 @@ public class EarthquakeMap extends PApplet {
 
         frame.setTitle("Earthquakes in and around Iceland from the past 48 hours");
 
-        image = loadImage("799x649px-map_of_iceland.png");
+        image = loadImage("2000px-map_of_iceland.png");
 
         dataProvider = new DataProvider(this);
 
@@ -68,10 +68,12 @@ public class EarthquakeMap extends PApplet {
 
         if (key == 'm' || key == 'M') {
             if (earthquakes.get(0).getVisualisationMode() == VisualisationMode.StaticMode) {
+                legend.setVisible(false);
                 for (Earthquake earthquake : earthquakes) {
                     earthquake.setVisualisationMode(VisualisationMode.DynamicMode);
                 }
             } else {
+                legend.setVisible(true);
                 for (Earthquake earthquake : earthquakes) {
                     earthquake.setVisualisationMode(VisualisationMode.StaticMode);
                 }

@@ -33,7 +33,7 @@ public class Earthquake {
 
     private Emitter emitter;
 
-    private VisualisationMode visualisationMode = VisualisationMode.DynamicMode;
+    private VisualisationMode visualisationMode = VisualisationMode.StaticMode;
 
     private PApplet applet;
 
@@ -44,18 +44,15 @@ public class Earthquake {
     public void MapCoordinates() {
         mapLatitude = map((float) this.latitude, 63.1f, 66.8f, 0, applet.width);
         mapLongitude = map((float) this.longitude, -25.0f, -13.0f, 0, applet.height);
-
-        mapWidth = (float) Math.abs(this.size) * 20f; // Absolute value of size, because size can be negative
-        mapHeigth = (float) Math.abs(this.size) * 20f; // Absolute value of size, because size can be negative
         
         // Each next level on the richter scale is 10 times stronger than the previous level
-//        mapWidth = (float) Math.pow(this.size, this.size) * 20f; // Absolute value of size, because size can be negative
-//        mapHeigth = (float) Math.pow(this.size, this.size) * 20f; // Absolute value of size, because size can be negative
+        mapWidth = (float) Math.pow(this.size, 10); // Absolute value of size, because size can be negative
+        mapHeigth = (float) Math.pow(this.size, 10); // Absolute value of size, because size can be negative
 
         // A size of -1 should be smaller than 1
         if (this.size < 0) {
-            mapWidth = 5f;
-            mapHeigth = 5f;
+            mapWidth = 2f;
+            mapHeigth = 2f;
         }
 
         emitter = new Emitter(applet, new Vector2<Float>(mapLatitude, mapLongitude), new Vector2<Float>(mapWidth, mapHeigth));
