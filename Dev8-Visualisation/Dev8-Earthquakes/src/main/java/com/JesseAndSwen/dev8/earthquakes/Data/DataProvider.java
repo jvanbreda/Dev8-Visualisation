@@ -19,6 +19,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collections;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 import java.util.TimeZone;
 import processing.data.JSONArray;
@@ -96,7 +97,13 @@ public class DataProvider {
             //URL url = new URL(urlString); // "http://apis.is/earthquake/is"
 
             BufferedReader br = new BufferedReader(new InputStreamReader(url.openStream()));
-            String jsonString = br.readLine();
+            String jsonString = "";
+                    
+            Iterator lines = br.lines().iterator();
+            while (lines.hasNext()) {                
+                String line = (String)lines.next();
+                jsonString += line;
+            }
 
             JSONObject jObject = JSONObject.parse(jsonString);
             array = jObject.getJSONArray("results");

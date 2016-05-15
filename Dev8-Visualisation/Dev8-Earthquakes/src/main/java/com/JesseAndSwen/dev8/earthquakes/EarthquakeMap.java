@@ -41,7 +41,7 @@ public class EarthquakeMap extends PApplet {
 
         dataProvider = new DataProvider(this);
 
-        earthquakes = (ArrayList<Earthquake>) dataProvider.getEarthquakeData(DataProvider.DataType.LIVE);
+        earthquakes = (ArrayList<Earthquake>) dataProvider.getEarthquakeData(DataProvider.DataType.TEST);
     }
 
     public void draw() {
