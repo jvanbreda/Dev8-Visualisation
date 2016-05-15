@@ -1,0 +1,112 @@
+{
+  "results": [
+    {
+      "timestamp": "2016-05-15T14:43:42.000Z",
+      "latitude": 63.1,
+      "longitude": -18,
+      "depth": 1,
+      "size": -1.0,
+      "quality": 90.01,
+      "humanReadableLocation": "13,1 km NNA af Grímsey"
+    },
+    {
+      "timestamp": "2016-05-15T14:34:43.000Z",
+      "latitude": 63.2,
+      "longitude": -18,
+      "depth": 2,
+      "size": 0.1,
+      "quality": 90.01,
+      "humanReadableLocation": "4,0 km SSV af Hestfjalli"
+    },
+    {
+      "timestamp": "2016-05-15T14:33:53.000Z",
+      "latitude": 63.3,
+      "longitude": -18,
+      "depth": 3,
+      "size": 0.2,
+      "quality": 30.96,
+      "humanReadableLocation": "4,6 km SSV af Hestfjalli"
+    },
+    {
+      "timestamp": "2016-05-15T14:31:43.000Z",
+      "latitude": 63.4,
+      "longitude": -18,
+      "depth": 4,
+      "size": 0.4,
+      "quality": 90.01,
+      "humanReadableLocation": "14,4 km ANA af Kistufelli"
+    },
+    {
+      "timestamp": "2016-05-15T13:31:23.000Z",
+      "latitude": 63.5,
+      "longitude": -18,
+      "depth": 8,
+      "size": 0.8,
+      "quality": 32.62,
+      "humanReadableLocation": "1,7 km N af Herðubreið"
+    },
+    {
+      "timestamp": "2016-05-15T12:57:18.000Z",
+      "latitude": 63.6,
+      "longitude": -18,
+      "depth": 12,
+      "size": 1.6,
+      "quality": 46.2,
+      "humanReadableLocation": "9,9 km NA af Grímsey"
+    },
+    {
+      "timestamp": "2016-05-15T11:17:48.000Z",
+      "latitude": 63.7,
+      "longitude": -18,
+      "depth": 20,
+      "size": 2.8,
+      "quality": 90.01,
+      "humanReadableLocation": "3,5 km SA af Herðubreið"
+    },
+    {
+      "timestamp": "2016-05-15T11:17:48.000Z",
+      "latitude": 63.8,
+      "longitude": -18,
+      "depth": 20,
+      "size": 5.9,
+      "quality": 90.01,
+      "humanReadableLocation": "3,5 km SA af Herðubreið"
+    },
+    {
+      "timestamp": "2016-05-15T10:53:20.000Z",
+      "latitude": 65,
+      "longitude": -18,
+      "depth": 1,
+      "size": 3,
+      "quality": 63.11,
+      "humanReadableLocation": "3,2 km VSV af Þeistareykjum"
+    },
+    {
+      "timestamp": "2016-05-15T10:18:58.000Z",
+      "latitude": 65,
+      "longitude": -18,
+      "depth": 2,
+      "size": 2,
+      "quality": 90.01,
+      "humanReadableLocation": "17,9 km VSV af Kópaskeri"
+    },
+    {
+      "timestamp": "2016-05-15T10:10:31.000Z",
+      "latitude": 65,
+      "longitude": -18,
+      "depth": 5,
+      "size": 1,
+      "quality": 47.86,
+      "humanReadableLocation": "15,8 km ANA af Kistufelli"
+    },
+    {
+      "timestamp": "2016-05-15T09:52:50.000Z",
+      "latitude": 65,
+      "longitude": -18,
+      "depth": 1,
+      "size": -0.2,
+      "quality": 74.57,
+      "humanReadableLocation": "4,4 km NA af Eldey á Rneshr."
+    }
+  ]
+}
