@@ -52,8 +52,13 @@ public class Converter {
         int m2 = longitude.getMinutes();
         float s2 = longitude.getSeconds();
         
-        float dd1 = d1 + (m1/60) + (s1/3600);
-        float dd2 = d2 + (m2/60) + (s2/3600);
+        float dd1 = ((s1/60f) + m1) / 60f + Math.abs(d1);
+        float dd2 = ((s2/60f) + m2) / 60f + Math.abs(d2);
+        
+        if (d1 < 0)
+            dd1 *= -1;
+        if (d2 < 0)
+            dd2 *= -1;
         
         return new CoordinateDecimal(dd1, dd2);
     }
@@ -64,11 +69,11 @@ public class Converter {
         
         int d1 = (int) latitude;
         int m1 = (int) (Math.abs(latitude) * 60) % 60;
-        float s1 = Math.abs(latitude) * 3600 % 60;
+        float s1 = Math.abs(latitude) * 3600 % 60f;
         
         int d2 = (int) longitude;
         int m2 = (int) (Math.abs(longitude) * 60) % 60;
-        float s2 = Math.abs(longitude) * 3600 % 60;
+        float s2 = Math.abs(longitude) * 3600 % 60f;
         
         GeoCoordinate g1 = new GeoCoordinate(d1, m1, s1);
         GeoCoordinate g2 = new GeoCoordinate(d2, m2, s2);
