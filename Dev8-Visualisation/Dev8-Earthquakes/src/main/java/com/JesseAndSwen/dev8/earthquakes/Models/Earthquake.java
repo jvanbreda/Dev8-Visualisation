@@ -8,6 +8,7 @@ package com.JesseAndSwen.dev8.earthquakes.Models;
 import com.JesseAndSwen.dev8.earthquakes.Display.Popover;
 import com.JesseAndSwen.dev8.earthquakes.Emitters.Emitter;
 import com.JesseAndSwen.dev8.earthquakes.EarthquakeMap;
+import java.util.Comparator;
 import java.util.Date;
 import processing.core.PApplet;
 import static processing.core.PApplet.map;
@@ -46,9 +47,12 @@ public class Earthquake {
         mapLatitude = map((float) this.latitude, 63.1f, 66.8f, 0, applet.width);
         mapLongitude = map((float) this.longitude, -25.0f, -13.0f, 0, applet.height);
         
+//        mapLatitude = map((float) this.latitude, 63.1f, 66.8f, 0, applet.width);
+//        mapLongitude = map((float) this.longitude, -25.0f, -13.0f, 0, applet.height);
+
         // Each next level on the richter scale is 10 times stronger than the previous level
-        mapWidth = (float) Math.pow(this.size, 10); // Absolute value of size, because size can be negative
-        mapHeigth = (float) Math.pow(this.size, 10); // Absolute value of size, because size can be negative
+        mapWidth = (float) Math.abs(this.size) * 20; // Absolute value of size, because size can be negative
+        mapHeigth = (float) Math.abs(this.size) * 20; // Absolute value of size, because size can be negative
 
         // A size of -1 should be smaller than 1
         if (this.size < 0) {
@@ -100,6 +104,25 @@ public class Earthquake {
     }
 
     public void setVisualisationMode(VisualisationMode visualisationMode) {
+        if (visualisationMode == VisualisationMode.DynamicMode) {
+            // Each next level on the richter scale is 10 times stronger than the previous level
+//            mapWidth = (float) Math.pow(this.size, 10);
+//            mapHeigth = (float) Math.pow(this.size, 10);
+            mapWidth = (float) Math.abs(this.size) * 25; // Absolute value of size, because size can be negative
+            mapHeigth = (float) Math.abs(this.size) * 25; // Absolute value of size, because size can be negative
+            
+            emitter = new Emitter(applet, new Vector2<Float>(mapLatitude, mapLongitude), new Vector2<Float>(mapWidth, mapHeigth));
+        } else {
+            mapWidth = (float) Math.abs(this.size) * 20; // Absolute value of size, because size can be negative
+            mapHeigth = (float) Math.abs(this.size) * 20; // Absolute value of size, because size can be negative
+        }
+
+        // A size of -1 should be smaller than 1
+        if (this.size < 0) {
+            mapWidth = 2f;
+            mapHeigth = 2f;
+        }
+
         this.visualisationMode = visualisationMode;
     }
 }

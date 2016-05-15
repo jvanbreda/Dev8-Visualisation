@@ -8,13 +8,16 @@ package com.JesseAndSwen.dev8.earthquakes.Data;
 import com.JesseAndSwen.dev8.earthquakes.EarthquakeMap;
 import com.JesseAndSwen.dev8.earthquakes.Models.Earthquake;
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.URL;
+import java.nio.file.Paths;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 import java.util.TimeZone;
@@ -33,10 +36,20 @@ public class DataProvider {
         this.earthquakeMap = earthquakeMap;
     }
     
-    public List<Earthquake> getEarthquakeData() {
+    public List<Earthquake> getEarthquakeData(DataType dataType) {
         List<Earthquake> earthquakes = new ArrayList<>();
 
-        JSONArray jArray = getData();
+        JSONArray jArray = new JSONArray();
+        
+        try {
+        if(dataType == DataType.LIVE)
+            jArray = getData(new URL("http://apis.is/earthquake/is"));
+        else
+            jArray = getData(new File("earthquake_data_TEST.json").toURI().toURL()); //"../../../../../earthquake_data_TEST.json"
+        } catch (Exception e) {
+        }
+        
+            
         for (int i = 0; i < jArray.size(); i++) {
             JSONObject jObject = jArray.getJSONObject(i);
 
@@ -63,17 +76,21 @@ public class DataProvider {
             earthquake.humanReadableLocation = jObject.getString("humanReadableLocation");
             
             earthquake.MapCoordinates();
-
-            earthquakes.add(earthquake);
+            
+            if(isInBounds(earthquake))
+                earthquakes.add(earthquake);
         }
 
+        // Sort the collection so that the big earthquakes will be drawn first, with the little ones over them
+        Collections.sort(earthquakes, (e1, e2) -> ((Double)(e2.size)).compareTo(e1.size));
+        
         return earthquakes;
     }
 
-    private JSONArray getData() {
+    private JSONArray getData(URL url) {
         JSONArray array = new JSONArray();
         try {
-            URL url = new URL("http://apis.is/earthquake/is");
+            //URL url = new URL(urlString); // "http://apis.is/earthquake/is"
 
             BufferedReader br = new BufferedReader(new InputStreamReader(url.openStream()));
             String jsonString = br.readLine();
@@ -86,5 +103,16 @@ public class DataProvider {
         }
 
         return array;
+    }
+    
+    private boolean isInBounds(Earthquake earthquake) {
+        return (earthquake.mapLatitude > 0 && earthquake.mapLatitude < 799 && earthquake.mapLongitude > 0 && earthquake.mapLongitude < 649);
+        // For coordinates
+        //return (earthquake.longitude >= -25f && earthquake.longitude <= -13f && earthquake.latitude <= 66.8f && earthquake.latitude >= 63.1f);
+    }
+    
+    public enum DataType {
+        LIVE,
+        TEST
     }
 }
