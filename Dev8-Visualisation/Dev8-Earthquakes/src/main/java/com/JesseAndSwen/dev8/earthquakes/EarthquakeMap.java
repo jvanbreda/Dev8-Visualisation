@@ -36,7 +36,7 @@ public class EarthquakeMap extends PApplet {
 
     public void setup() {
         legend = new Legend(this, new String[]{"Every circle represent an earthquake.", "The bigger the circles, the bigger the size of the earthquake", "Depths:"}, 799);
-        controlInfo = new ControlInfo(new String[]{"Press 'H' to toggle the legend and this box.", "Press 'M' to switch between static and dymanic mode."}, this, 799);
+        controlInfo = new ControlInfo(new String[]{"- Press 'H' to toggle the legend and this box.", "- Press 'M' to switch between static and dymanic mode.", "- Hover over the circles to find more information about the", "earthquake"}, this, 799);
         
         size(799 + legend.getWidth(), 649);
 
@@ -75,23 +75,19 @@ public class EarthquakeMap extends PApplet {
         if (key == 'h' || key == 'H') {
             if (legend.isVisible()) {
                 legend.setVisible(false);
-                controlInfo.setVisable(false);
+                controlInfo.setVisible(false);
             } else {
                 legend.setVisible(true);
-                controlInfo.setVisable(true);
+                controlInfo.setVisible(true);
             }
         }
 
         if (key == 'm' || key == 'M') {
             if (earthquakes.get(0).getVisualisationMode() == VisualisationMode.StaticMode) {
-                legend.setVisible(false);
-                controlInfo.setVisable(false);
                 for (Earthquake earthquake : earthquakes) {
                     earthquake.setVisualisationMode(VisualisationMode.DynamicMode);
                 }
             } else {
-                legend.setVisible(true);
-                controlInfo.setVisable(true);
                 for (Earthquake earthquake : earthquakes) {
                     earthquake.setVisualisationMode(VisualisationMode.StaticMode);
                 }

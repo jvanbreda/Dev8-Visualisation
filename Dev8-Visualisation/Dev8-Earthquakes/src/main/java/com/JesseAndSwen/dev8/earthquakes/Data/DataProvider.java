@@ -94,8 +94,6 @@ public class DataProvider {
     private JSONArray getData(URL url) {
         JSONArray array = new JSONArray();
         try {
-            //URL url = new URL(urlString); // "http://apis.is/earthquake/is"
-
             BufferedReader br = new BufferedReader(new InputStreamReader(url.openStream()));
             String jsonString = "";
                     
