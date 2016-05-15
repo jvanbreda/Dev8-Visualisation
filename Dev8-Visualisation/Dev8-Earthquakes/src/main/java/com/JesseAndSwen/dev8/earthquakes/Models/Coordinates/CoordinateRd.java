@@ -34,5 +34,10 @@ public class CoordinateRd {
         this.rdY = rdY;
     }
     
+    @Override
+    public String toString(){
+        return "CoordinateRd[latitude: " + rdX + "; longitude: " + rdY + "]";
+    }
+    
     
 }
