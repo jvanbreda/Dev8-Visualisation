@@ -5,11 +5,6 @@
  */
 package com.JesseAndSwen.dev8.earthquakes;
 
-import com.JesseAndSwen.dev8.earthquakes.Data.Converter;
-import com.JesseAndSwen.dev8.earthquakes.Models.Coordinates.CoordinateDecimal;
-import com.JesseAndSwen.dev8.earthquakes.Models.Coordinates.CoordinateGeographic;
-import com.JesseAndSwen.dev8.earthquakes.Models.Coordinates.GeoCoordinate;
-
 /**
  *
  * @author Jesse
