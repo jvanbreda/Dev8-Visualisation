@@ -10,37 +10,32 @@ package com.JesseAndSwen.dev8.earthquakes.Models.Coordinates;
  * @author swenm_000
  */
 public class CoordinateGeographic {
-    private float degrees;
-    private int minutes;
-    private int seconds;
+    private GeoCoordinate latitude;
+    private GeoCoordinate longitude;
 
-    public CoordinateGeographic(float degrees, int minutes, int seconds) {
-        this.degrees = degrees;
-        this.minutes = minutes;
-        this.seconds = seconds;
+    public CoordinateGeographic(GeoCoordinate latitude, GeoCoordinate longitude) {
+        this.latitude = latitude;
+        this.longitude = longitude;
+    }
+    
+    public GeoCoordinate getLatitude() {
+        return latitude;
     }
 
-    public float getDegrees() {
-        return degrees;
+    public void setLatitude(GeoCoordinate latitude) {
+        this.latitude = latitude;
     }
 
-    public void setDegrees(float degrees) {
-        this.degrees = degrees;
+    public GeoCoordinate getLongitude() {
+        return longitude;
     }
 
-    public int getMinutes() {
-        return minutes;
+    public void setLongitude(GeoCoordinate longitude) {
+        this.longitude = longitude;
     }
-
-    public void setMinutes(int minutes) {
-        this.minutes = minutes;
-    }
-
-    public int getSeconds() {
-        return seconds;
-    }
-
-    public void setSeconds(int seconds) {
-        this.seconds = seconds;
+    
+    @Override
+    public String toString() {
+        return "CoordinateGeographic[latitude: " + latitude.toString() + "; longitude: " + longitude.toString() + "]";
     }
 }
