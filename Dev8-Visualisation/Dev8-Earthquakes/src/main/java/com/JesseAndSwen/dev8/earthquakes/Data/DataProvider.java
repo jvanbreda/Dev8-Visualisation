@@ -29,27 +29,29 @@ import processing.data.JSONObject;
  * @author swenm_000
  */
 public class DataProvider {
-    
+
     private EarthquakeMap earthquakeMap;
 
     public DataProvider(EarthquakeMap earthquakeMap) {
         this.earthquakeMap = earthquakeMap;
     }
-    
+
     public List<Earthquake> getEarthquakeData(DataType dataType) {
         List<Earthquake> earthquakes = new ArrayList<>();
 
         JSONArray jArray = new JSONArray();
-        
+
         try {
-        if(dataType == DataType.LIVE)
-            jArray = getData(new URL("http://apis.is/earthquake/is"));
-        else
-            jArray = getData(new File("earthquake_data_TEST.json").toURI().toURL()); //"../../../../../earthquake_data_TEST.json"
+            if (dataType == DataType.LIVE) {
+                jArray = getData(new URL("http://apis.is/earthquake/is"));
+            } else {
+                ClassLoader classLoader = getClass().getClassLoader();
+                File file = new File(classLoader.getResource("earthquake_data_TEST.json").getFile());
+                jArray = getData(file.toURI().toURL());
+            }
         } catch (Exception e) {
         }
-        
-            
+
         for (int i = 0; i < jArray.size(); i++) {
             JSONObject jObject = jArray.getJSONObject(i);
 
@@ -61,7 +63,7 @@ public class DataProvider {
                 sdf.setCalendar(cal);
                 cal.setTime(sdf.parse(jObject.getString("timestamp")));
                 Date date = cal.getTime();
-                
+
                 earthquake.timestamp = date;
             } catch (Exception e) {
                 System.err.println("Could not convert timestamp from JSONObject to earthquake.");
@@ -74,16 +76,17 @@ public class DataProvider {
             earthquake.size = jObject.getDouble("size");
             earthquake.quality = jObject.getDouble("quality");
             earthquake.humanReadableLocation = jObject.getString("humanReadableLocation");
-            
+
             earthquake.MapCoordinates();
-            
-            if(isInBounds(earthquake))
+
+            if (isInBounds(earthquake)) {
                 earthquakes.add(earthquake);
+            }
         }
 
         // Sort the collection so that the big earthquakes will be drawn first, with the little ones over them
-        Collections.sort(earthquakes, (e1, e2) -> ((Double)(e2.size)).compareTo(e1.size));
-        
+        Collections.sort(earthquakes, (e1, e2) -> ((Double) (e2.size)).compareTo(e1.size));
+
         return earthquakes;
     }
 
@@ -104,14 +107,15 @@ public class DataProvider {
 
         return array;
     }
-    
+
     private boolean isInBounds(Earthquake earthquake) {
         return (earthquake.mapLatitude > 0 && earthquake.mapLatitude < 799 && earthquake.mapLongitude > 0 && earthquake.mapLongitude < 649);
         // For coordinates
         //return (earthquake.longitude >= -25f && earthquake.longitude <= -13f && earthquake.latitude <= 66.8f && earthquake.latitude >= 63.1f);
     }
-    
+
     public enum DataType {
+
         LIVE,
         TEST
     }
