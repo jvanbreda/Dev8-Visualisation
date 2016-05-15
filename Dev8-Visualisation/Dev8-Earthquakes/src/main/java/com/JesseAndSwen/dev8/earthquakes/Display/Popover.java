@@ -45,7 +45,7 @@ public class Popover {
         applet.strokeWeight(1);
         applet.stroke(0);
         // Check if the popover fits on the screen
-        if (applet.mouseX + width < applet.width) {
+        if (applet.mouseX + width < 799) { //applet.width
             // It fits, draw to the right side
             applet.fill(255);
             applet.rect(applet.mouseX, applet.mouseY, width, -height);
