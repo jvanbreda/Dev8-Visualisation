@@ -46,11 +46,7 @@ public class Earthquake {
     public void MapCoordinates() {
         mapLatitude = map((float) this.latitude, 63.1f, 66.8f, 0, applet.width);
         mapLongitude = map((float) this.longitude, -25.0f, -13.0f, 0, applet.height);
-        
-//        mapLatitude = map((float) this.latitude, 63.1f, 66.8f, 0, applet.width);
-//        mapLongitude = map((float) this.longitude, -25.0f, -13.0f, 0, applet.height);
 
-        // Each next level on the richter scale is 10 times stronger than the previous level
         mapWidth = (float) Math.abs(this.size) * 20; // Absolute value of size, because size can be negative
         mapHeigth = (float) Math.abs(this.size) * 20; // Absolute value of size, because size can be negative
 

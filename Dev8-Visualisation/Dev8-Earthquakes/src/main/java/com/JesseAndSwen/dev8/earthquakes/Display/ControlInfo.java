@@ -24,7 +24,7 @@ public class ControlInfo {
     private final int height = 539;
     private final int lineSpacing = 20;
     
-    private boolean visable = true;
+    private boolean visible = true;
 
     public ControlInfo(String[] content, EarthquakeMap earthquakeMap, int marginLeft) {
         this.content = content;
@@ -34,7 +34,7 @@ public class ControlInfo {
         
 
     public void draw() {
-        if(!visable)
+        if(!visible)
             return;
         
         earthquakeMap.strokeWeight(1);
@@ -50,11 +50,11 @@ public class ControlInfo {
         }
     }
     
-    public boolean isVisable() {
-        return visable;
+    public boolean isVisible() {
+        return visible;
     }
 
-    public void setVisable(boolean visable) {
-        this.visable = visable;
+    public void setVisible(boolean visable) {
+        this.visible = visable;
     }
 }

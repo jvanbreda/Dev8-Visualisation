@@ -45,10 +45,6 @@ public class Legend {
         
         earthquakeMap.fill(255);
         earthquakeMap.rect(marginLeft + position.x, position.y, width, height);
-        
-//        Close X
-//        earthquakeMap.line(position.x + width - padding - 32, position.y + padding, position.x + width - padding, position.y + 40 - padding);
-//        earthquakeMap.line(position.x + width - padding, position.y + padding, position.x + width - padding - 32, position.y + 40 - padding);
                 
         earthquakeMap.fill(0);
         
