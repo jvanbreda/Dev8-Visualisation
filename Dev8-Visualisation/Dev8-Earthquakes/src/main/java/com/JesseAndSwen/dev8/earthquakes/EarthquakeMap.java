@@ -31,7 +31,9 @@ public class EarthquakeMap extends PApplet {
     private Legend legend;
 
     public void setup() {
-        size(799, 649);
+        legend = new Legend(this, new String[]{"Every circle represent an earthquake.", "The bigger the circles, the bigger the size of the earthquake", "Depths:"}, 799);
+        
+        size(799 + legend.getWidth(), 649);
 
         frame.setTitle("Earthquakes in and around Iceland from the past 48 hours");
 
@@ -39,23 +41,25 @@ public class EarthquakeMap extends PApplet {
 
         dataProvider = new DataProvider(this);
 
-        earthquakes = (ArrayList<Earthquake>) dataProvider.getEarthquakeData();
-
-        legend = new Legend(this, new String[]{"Every circle represent an earthquake.", "The bigger the circles, the bigger the size of the earthquake", "Depths:"});
+        earthquakes = (ArrayList<Earthquake>) dataProvider.getEarthquakeData(DataProvider.DataType.LIVE);
     }
 
     public void draw() {
         strokeWeight(1);
         stroke(0);
 
-        background(image);
-        legend.draw();
+        background(255);
+        
+        image(image, 0, 0);
+        
         drawDataSource();
 
         drawLocations();
         for (Earthquake earthquake : earthquakes) {
             earthquake.act();
         }
+        
+        legend.draw();
     }
 
     public void keyPressed() {
